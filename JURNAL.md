@@ -101,5 +101,9 @@ A5: pentru descrierea Dune ghiceste genul sf cu incredere de 77%
 
 
 LABORATOR 9
-1 de ce apare (sau nu) eticheta „cititor nou” pentru cititorul vostru?
+1.1 de ce apare (sau nu) eticheta „cititor nou” pentru cititorul vostru?
 pentru cititorul 1050 serviciul grpc nu returneaza  recomandări directe (lista de cărți este goală) deoarece ID-ul nu are un profil suficient antrenat sau istoric în setul de date al modelului de recomandare de pe server
+2.1 Rulați Biblioteca și portalul nemodificat (cu vechiul recommender.proto). Cereți recomandări.
+Notați în Jurnal.md ce se întâmplă
+portalul funcționează normal și afișează recomandările (titlul și scorul) primite de la serverul gRPC, deși recommender.proto a fost actualizat cu noul câmp label. Aceasta demonstrează compatibilitatea gRPC / Protocol Buffers: clienții vechi pot citi mesajele ignorând câmpurile suplimentare si necunoscute trimise de server, fără a genera erori.
+3. ok

@@ -76,6 +76,16 @@ public class RecommenderGrpcService(
         BookId = r.BookId,
         Title = r.Title,
         Score = r.Score,
-        Fallback = r.Fallback
+        Fallback = r.Fallback,
+        Label = Eticheta(r)
     };
+
+    private const float PragFoarte = 4.0f;
+    private const float PragRecomandata = 3.0f;
+
+    private static string Eticheta(Recommendation r) =>
+        r.Fallback ? "Populară (cititor nou)"
+        : r.Score >= PragFoarte ? "Foarte recomandată"
+        : r.Score >= PragRecomandata ? "Recomandată"
+        : "Neutră";
 }
