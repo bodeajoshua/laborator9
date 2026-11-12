@@ -5,13 +5,13 @@
   2. Înlocuiți tot ce este între \\\[paranteze drepte] 
  
 
-# Laboratorul Î4 · \\\Cirlig Bianca · nr. matricol \\\[121200054] · varianta \\\[A4 · B1]
+# Laboratorul Î4 · \\\Bodea Joshua-Daniel · nr. matricol \\\[121200050] · varianta \\\[A0 · B1]
 
 |Parametru|Valoarea mea|
 |-|-|
-|A (ultima cifră a nr. matricol: \\\[4])|\\\[A4]|
+|A (ultima cifră a nr. matricol: \\\[0])|\\\[A0]|
 |B (penultima cifră a nr. matricol: \\\[5])|\\\[B1]|
-|V1 · cărți pe pagină|\\\[9]|
+|V1 · cărți pe pagină|\\\[5]|
 |V2 · sortarea implicită a catalogului| \\\[preț desc]|
 |V3 · filtrul din S3|\\\[autor]|
 |V4 · indicatorul din S2|\\\[preț mediu]|
@@ -98,3 +98,8 @@ A4: MicroAccuracy: 74.7%   - calculeaza global si este influentata de genurile c
     
 A5: pentru descrierea Dune ghiceste genul sf cu incredere de 77%
     pentru descrierea "un detectiv pe o stație spațială" ghiceste genul sf cu incredere de 80%
+
+
+LABORATOR 9
+1 de ce apare (sau nu) eticheta „cititor nou” pentru cititorul vostru?
+pentru cititorul 1050 serviciul grpc nu returneaza  recomandări directe (lista de cărți este goală) deoarece ID-ul nu are un profil suficient antrenat sau istoric în setul de date al modelului de recomandare de pe server
