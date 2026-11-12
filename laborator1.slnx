@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="../Biblioteca.Agent/Biblioteca.Agent.csproj" Id="be40526a-a954-4a49-af5b-6c445b326cad" />
+  <Project Path="../Biblioteca.Client/Biblioteca.Client.csproj" Id="769e387d-ec77-4c30-80dd-7b04149456bf" />
+  <Project Path="../Biblioteca.Embeddings/Biblioteca.Embeddings.csproj" Id="eadab9f7-ed12-4c09-b9f0-819fe46eefdf" />
+  <Project Path="../Biblioteca.ML.Training/Biblioteca.ML.Training.csproj" Id="58af54f8-d2b4-4262-b9b3-bc57b7250c02" />
+  <Project Path="../Clasificare/Clasificare.csproj" Id="f359ca54-f92c-440d-b0c6-f51b8636354a" />
+  <Project Path="laborator1.csproj" />
+</Solution>

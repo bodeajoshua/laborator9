@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard Administrator</h1>
+<hr />
+
+<div class="row text-center mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Total Evaluări</h5>
+                <h3>@ViewData["TotalRatings"]</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Cititori Distincți</h5>
+                <h3>@ViewData["DistinctReaders"]</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Media Generală Note</h5>
+                <h3>@(Math.Round(Convert.ToDouble(ViewData["AverageRating"]), 2)) ⭐</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card shadow p-3">
+            <h5 class="text-center">Distribuția Notelor (1–5 Stele)</h5>
+            <canvas id="ratingsChart"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card shadow p-3">
+            <h5 class="text-center">Media Evaluărilor pe Gen (B0)</h5>
+            <canvas id="genreChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctxRatings = document.getElementById('ratingsChart').getContext('2d');
+        new Chart(ctxRatings, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(ViewData["RatingStars"]),
+                datasets: [{
+                    label: 'Număr evaluări',
+                    data: @Html.Raw(ViewData["RatingCounts"]),
+                    backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+            }
+        });
+
+        const ctxGenre = document.getElementById('genreChart').getContext('2d');
+        new Chart(ctxGenre, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(ViewData["GenreLabels"]),
+                datasets: [{
+                    label: 'Media stelelor',
+                    data: @Html.Raw(ViewData["GenreAverages"]),
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: { y: { beginAtZero: true, max: 5 } }
+            }
+        });
+    </script>
+}

@@ -1,0 +1,68 @@
+@model laborator1.Models.AuthorDetailsViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Author</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Nume
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Name
+        </dd>
+
+        <dt class="col-sm-2">
+            Total Comenzi
+        </dt>
+        <dd class="col-sm-10">
+            <strong>@Model.TotalOrdersCount</strong>
+        </dd>
+        <dt class="col-sm-2">
+            Pret mediu carti
+        </dt>
+        <dd class="col-sm-10">
+            @Model.AveragePrice.ToString("C")
+        </dd>
+    </dl>
+</div>
+<div>
+    <h5>Cartile scrise de acest autor:</h5>
+    @if (Model.Books.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titlu</th>
+                    <th>Gen</th>
+                    <th>Pret</th>
+                    <th>Numar comenzi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td>@book.Title</td>
+                        <td>@book.GenreName</td>
+                        <td>@book.Price.ToString("C")</td>
+                        <td>@book.OrderCount</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Acest autor nu are nicio carte inregistrata</p>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.AuthorID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

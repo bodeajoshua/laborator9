@@ -1,0 +1,81 @@
+﻿@model PaginatedList<RecommendationLog>
+
+@{
+    ViewData["Title"] = "Jurnal Recomandări";
+}
+
+<h1>Jurnal Recomandări API</h1>
+
+<form asp-action="Log" method="get" class="row g-3 mb-4">
+    <div class="col-md-3">
+        <label for="readerFilter" class="form-label">ID Cititor</label>
+        <input type="number" name="readerFilter" value="@ViewData["CurrentReaderFilter"]" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label for="startDate" class="form-label">De la data</label>
+        <input type="date" name="startDate" value="@ViewData["StartDateFilter"]" class="form-control" />
+    </div>
+    <div class="col-md-3">
+        <label for="endDate" class="form-label">Până la data</label>
+        <input type="date" name="endDate" value="@ViewData["EndDateFilter"]" class="form-control" />
+    </div>
+    <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-primary me-2">Filtrează</button>
+        <a asp-action="Log" class="btn btn-secondary">Resetează</a>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID Cititor</th>
+            <th>
+                <a asp-action="Log" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-readerFilter="@ViewData["CurrentReaderFilter"]" asp-route-startDate="@ViewData["StartDateFilter"]" asp-route-endDate="@ViewData["EndDateFilter"]">
+                    Data apelului
+                </a>
+            </th>
+            <th>Cărți returnate (ID-uri)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ReaderId</td>
+                <td>@item.Date.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                <td>@item.BookIds</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var prevDisabled = Model.HasPreviousPage ? "" : "disabled";
+    var nextDisabled = Model.HasNextPage ? "" : "disabled";
+}
+
+<div class="d-flex justify-content-between align-items-center">
+    <div>
+        Pagina @Model.PageIndex din @Model.TotalPages
+    </div>
+    <div>
+        <a asp-action="Log"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-readerFilter="@ViewData["CurrentReaderFilter"]"
+           asp-route-startDate="@ViewData["StartDateFilter"]"
+           asp-route-endDate="@ViewData["EndDateFilter"]"
+           asp-route-pageNumber="@(Model.PageIndex - 1)"
+           class="btn btn-outline-primary @prevDisabled">
+            Înapoi
+        </a>
+        <a asp-action="Log"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-readerFilter="@ViewData["CurrentReaderFilter"]"
+           asp-route-startDate="@ViewData["StartDateFilter"]"
+           asp-route-endDate="@ViewData["EndDateFilter"]"
+           asp-route-pageNumber="@(Model.PageIndex + 1)"
+           class="btn btn-outline-primary @nextDisabled">
+            Înainte
+        </a>
+    </div>
+</div>
