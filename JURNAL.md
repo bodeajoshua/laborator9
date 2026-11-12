@@ -12,7 +12,7 @@
 |A (ultima cifră a nr. matricol: \\\[4])|\\\[A4]|
 |B (penultima cifră a nr. matricol: \\\[5])|\\\[B1]|
 |V1 · cărți pe pagină|\\\[9]|
-|V2 · sortarea implicită a catalogului|\\\[preț desc]|
+|V2 · sortarea implicită a catalogului| \\\[preț desc]|
 |V3 · filtrul din S3|\\\[autor]|
 |V4 · indicatorul din S2|\\\[preț mediu]|
 
